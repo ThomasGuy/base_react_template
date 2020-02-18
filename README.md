@@ -1,3 +1,5 @@
-## React, Gulp Template
+### React, Gulp Template for Browser Prototyping
 
-A basic template bit like create-react-app, for prototyping react-hooks
+A base template, a bit like create-react-app, for prototyping react, react-hooks etc
+
+in the browser using browser-sync reload

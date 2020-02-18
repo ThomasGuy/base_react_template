@@ -11,8 +11,8 @@ import concat from 'gulp-concat';
 
 
 const PROD = process.env.NODE_ENV === 'production';
-const buildDir = PROD ? 'build' : 'dist';
-const clean = () => del(['./dest/**/*', './build/**/*'])
+const buildDir = PROD ? 'build' : 'public';
+const clean = () => del([`${buildDir}/**/*`])
 const server = browserSync.create();
 
 const runServer = resolve => {
@@ -33,17 +33,22 @@ const path = {
   scripts: {
     site: 'src/js/*.js',
     src: 'src/js/**/*.*',
-    dest: 'dist/js',
+    dest: `${buildDir}/js`,
   },
   html: {
-    src: 'src/html/index.html',
+    src: 'src/html/*.*',
     dest: buildDir
+  },
+  img: {
+    src: 'src/img/*.*',
+    dest: `${buildDir}/img`
   }
 };
 
 function mvHtml () {
   return src(path.html.src).pipe(dest(path.html.dest))
 }
+
 
 function scripts() {
   return src(path.scripts.site, { sourcemaps: !PROD })
